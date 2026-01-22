@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -42,7 +42,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Current Image</label>
                                 <div>
-                                    <img src="{{ Storage::url($post->image_path) }}" alt="{{ $post->title }}" class="img-thumbnail" style="max-width: 300px;">
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="img-thumbnail" style="max-width: 300px;">
                                 </div>
                             </div>
                         @endif

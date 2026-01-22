@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="mb-3">
@@ -19,7 +19,7 @@
 
             <div class="card">
                 @if($post->image_path)
-                    <img src="{{ Storage::url($post->image_path) }}" class="card-img-top" alt="{{ $post->title }}">
+                    <img src="{{ asset('storage/' . $post->image_path) }}" class="card-img-top" alt="{{ $post->title }}">
                 @endif
                 <div class="card-body">
                     <h1 class="card-title mb-3">{{ $post->title }}</h1>

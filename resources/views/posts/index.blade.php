@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Blog Posts</h2>
+                <div>
+                    <h2 class="mb-1">Blog</h2>
+                    <p class="text-muted mb-0">Discover articles, tutorials, and insights from our community</p>
+                </div>
                 @auth
                     <a href="{{ route('posts.create') }}" class="btn btn-primary">Create New Post</a>
                 @endauth
@@ -21,7 +24,10 @@
             @forelse($posts as $post)
                 <div class="card mb-4">
                     @if($post->image_path)
-                        <img src="{{ Storage::url($post->image_path) }}" class="card-img-top" alt="{{ $post->title }}">
+                        <img src="{{ asset('storage/' . $post->image_path) }}" 
+                             class="card-img-top" 
+                             alt="{{ $post->title }}"
+                             style="width: 100%; height: 350px; object-fit: cover; object-position: center;">
                     @endif
                     <div class="card-body">
                         <h3 class="card-title">

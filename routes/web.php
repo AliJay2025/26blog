@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 
 // Blog routes
 Route::resource('posts', PostController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 
 
