@@ -4,9 +4,9 @@
 <div class="container py-5">
     <!-- Hero Section -->
     <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold mb-3">Welcome to 26Blog</h1>
+        <h1 class="display-4 fw-bold mb-3">Welcome to my 26Blog</h1>
         <p class="lead text-muted mx-auto" style="max-width: 600px;">
-            A modern blogging platform built with Laravel. Share your thoughts, connect with readers, and grow your audience.
+            A simple blogging website. Write posts, interact with readers, and build your community.
         </p>
         <div class="mt-4">
             <a href="{{ route('posts.index') }}" class="btn btn-primary btn-lg px-4 me-2">Browse Blog</a>
