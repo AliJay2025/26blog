@@ -32,7 +32,11 @@
                                 <img src="{{ asset('storage/' . $post->image_path) }}" class="card-img-top" alt="{{ $post->title }}" style="height: 200px; object-fit: cover;">
                             @endif
                             <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }}</h5>
+                                <h5 class="card-title">
+    				<a href="{{ route('posts.show', $post) }}" style="color: #dc2626 !important; text-decoration: none;">
+        			{{ $post->title }}
+    				</a>
+				</h5>
                                 <p class="card-text text-muted small">By {{ $post->user->name }} | {{ $post->created_at->format('M d, Y') }}</p>
                                 <p class="card-text">{{ Str::limit($post->description, 100) }}</p>
                                 <a href="{{ route('posts.show', $post) }}" class="btn btn-sm btn-outline-primary">Read More</a>

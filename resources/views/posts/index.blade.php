@@ -31,7 +31,7 @@
                     @endif
                     <div class="card-body">
                         <h3 class="card-title">
-                            <a href="{{ route('posts.show', $post) }}" class="text-decoration-none">
+                            <a href="{{ route('posts.show', $post) }}" class="text-decoration-none" style="color: #dc2626;">
                                 {{ $post->title }}
                             </a>
                         </h3>
