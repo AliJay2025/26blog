@@ -17,7 +17,8 @@
                 </div>
             @endif
 
-            <div class="card">
+            <!-- Main Post Content -->
+            <div class="card mb-4">
                 @if($post->image_path)
                     <img src="{{ asset('storage/' . $post->image_path) }}" class="card-img-top" alt="{{ $post->title }}">
                 @endif
@@ -49,6 +50,48 @@
                     <div class="card-text">
                         {!! nl2br(e($post->description)) !!}
                     </div>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Comments</h3>
+                </div>
+                <div class="card-body">
+                    @auth
+                        <form method="POST" action="{{ route('comments.store', $post) }}" class="mb-4">
+                            @csrf
+                            <div class="mb-3">
+                                <textarea name="content" rows="3" class="form-control" placeholder="Add a comment..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
+                        </form>
+                    @else
+                        <p class="mb-4">
+                            <a href="{{ route('login') }}">Login</a> to comment.
+                        </p>
+                    @endauth
+
+                    @forelse($post->comments()->latest()->get() as $comment)
+                        <div class="border-bottom pb-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong>{{ $comment->user->name }}</strong>
+                                <span class="text-muted small">{{ $comment->created_at->diffForHumans() }}</span>
+                            </div>
+                            <p class="mt-2 mb-2">{{ $comment->content }}</p>
+                            
+                            @can('delete', $comment)
+                                <form method="POST" action="{{ route('comments.destroy', $comment) }}" class="mt-1">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-link text-danger p-0" onclick="return confirm('Delete this comment?')">Delete</button>
+                                </form>
+                            @endcan
+                        </div>
+                    @empty
+                        <p class="text-muted">No comments yet. Be the first to comment!</p>
+                    @endforelse
                 </div>
             </div>
         </div>

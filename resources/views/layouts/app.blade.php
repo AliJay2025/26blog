@@ -15,6 +15,8 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -37,7 +39,14 @@
                             <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('blog.*') || request()->routeIs('posts.*') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a>
+                            <a class="nav-link {{ request()->routeIs('posts.index') || request()->routeIs('posts.*') ? 'active' : '' }}" href="{{ route('posts.index') }}">Blog</a>
+                        </li>
+                        <!-- About and Contact links in navbar -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
 
@@ -96,7 +105,10 @@
                         <h6 class="fw-bold mb-3">Quick Links</h6>
                         <ul class="list-unstyled">
                             <li class="mb-2"><a href="{{ route('home') }}" class="text-muted text-decoration-none">Home</a></li>
-                            <li class="mb-2"><a href="{{ route('blog.index') }}" class="text-muted text-decoration-none">Blog</a></li>
+                            <li class="mb-2"><a href="{{ route('posts.index') }}" class="text-muted text-decoration-none">Blog</a></li>
+                            <!-- About and Contact links in footer -->
+                            <li class="mb-2"><a href="{{ route('about') }}" class="text-muted text-decoration-none">About</a></li>
+                            <li class="mb-2"><a href="{{ route('contact') }}" class="text-muted text-decoration-none">Contact</a></li>
                             @auth
                                 <li class="mb-2"><a href="{{ route('posts.create') }}" class="text-muted text-decoration-none">Write Post</a></li>
                             @endauth
