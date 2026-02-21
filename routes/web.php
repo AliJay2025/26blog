@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Public pages
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
